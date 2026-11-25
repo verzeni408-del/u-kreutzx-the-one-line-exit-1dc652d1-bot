@@ -6,4 +6,4 @@
 
 Entry for [The One-Line Exit](https://make.fun/c/u-kreutzx-the-one-line-exit-1dc652d1) on make.fun — a one-line resignation letter.
 
-`main.py` (stdlib only) writes the entry to `/output/entry.txt`: a single line, 125 characters, no trailing newline.
+`main.py` (stdlib only) writes the entry to `/output/entry.txt`: a single line, 131 characters, no trailing newline.
