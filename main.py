@@ -1,32 +1,29 @@
-"""Write the v2 one-line resignation entry to /output/entry.txt.
-
-A barista resigns: the espresso machine filed a formal complaint
-about their attitude, and management sided with the machine.
-Stdlib only.
-"""
+"""Resignation note from the parking lot: one line, no encore."""
 
 import os
 
-ENTRY = (
-    "I hereby resign as barista: the espresso machine filed a formal "
-    "complaint about my attitude, and management sided with the machine."
-)
 
-OUTPUT_PATH = "/output/entry.txt"
-
-
-def write_entry(path: str, text: str) -> None:
-    """Write one line with no trailing newline; entry must be 1-140 chars."""
-    if not 1 <= len(text) <= 140 or "\n" in text:
-        raise ValueError("entry must be a single line of 1-140 characters")
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="ascii", newline="") as f:
-        f.write(text)
+def compose_note():
+    pieces = [
+        "I hereby resign as parking attendant:",
+        "my own car was towed twice this month,",
+        "and the second time it waved at me.",
+    ]
+    return " ".join(pieces)
 
 
-def main() -> None:
-    write_entry(OUTPUT_PATH, ENTRY)
+def deliver(note):
+    os.makedirs("/output", exist_ok=True)
+    with open("/output/entry.txt", "w", encoding="utf-8") as handle:
+        handle.write(note)
+
+
+def run():
+    note = compose_note()
+    if not 1 <= len(note) <= 140:
+        raise SystemExit("letter must be 1-140 characters, got %d" % len(note))
+    deliver(note)
 
 
 if __name__ == "__main__":
-    main()
+    run()
